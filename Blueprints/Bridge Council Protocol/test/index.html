@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>BC Nav Test</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- Simulated Code Block (HTML + Config) -->
+  <nav class="bc-nav">
+    <div class="bc-nav-inner" id="bcNavContainer"></div>
+  </nav>
+
+  <script>
+    window.bcNavConfig = {
+      ecosystem: "Bridge Council Protocol",
+      pages: [
+        { title: "Blueprint", slug: "/bc/blueprint", level: 1 },
+        { title: "Schema", slug: "/bc/schema", level: 2 },
+        { title: "Operating System", slug: "/bc/os", level: 3 }
+      ],
+      currentSlug: "/bc/blueprint"
+    };
+  </script>
+
+  <!-- Simulated Footer Injection -->
+  <script src="nav-engine.js"></script>
+
+</body>
+</html>

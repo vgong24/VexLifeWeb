@@ -1,0 +1,845 @@
+/* =============================================
+   BRIDGE COUNCIL — SQUARESPACE DESIGN SYSTEM
+   Version: 1.0 — Source of Truth
+   Last updated: Feb 17, 2026
+   
+   SETUP:
+   1. Go to Squarespace > Design > Custom CSS
+   2. Paste this ENTIRE file
+   3. Save
+   
+   USAGE:
+   - Create pages with Code Blocks (not text blocks)
+   - All HTML uses bc-* class names
+   - Wrap everything in <div class="bc-page">
+   - Never use raw h1/h2/p selectors — always bc-* classes
+   
+   WHY bc-* PREFIX:
+   Squarespace applies its own styles to h1, h2, p, body, etc.
+   We cannot override those without !important wars.
+   Instead, we scope everything to our own namespace.
+   Squarespace does its thing. We do ours. No conflict.
+   ============================================= */
+
+
+/* ── Font Import ──────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+
+/* ── Variables ────────────────────────────── */
+:root {
+  --bc-ink: #1c1917;
+  --bc-paper: #fafaf9;
+  --bc-warm: #b45830;
+  --bc-muted: #78716c;
+  --bc-border: #e7e5e4;
+  --bc-green: #3d7a5a;
+  --bc-blue: #3b6b8a;
+  --bc-purple: #6b5b8a;
+  --bc-code-bg: #292524;
+  --bc-code-text: #e7e5e4;
+}
+
+
+/* ── Squarespace: Let code blocks breathe ─── */
+.sqs-block-code .sqs-block-content,
+.sqs-block-html .sqs-block-content {
+  max-width: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+
+/* =============================================
+   PAGE CONTAINER
+   ============================================= */
+
+.bc-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(32px, 6vw, 56px) clamp(16px, 4vw, 32px) clamp(48px, 8vw, 100px);
+  font-family: 'IBM Plex Sans', sans-serif !important;
+  color: var(--bc-ink);
+  line-height: 1.75;
+  font-size: clamp(15.5px, 1.6vw, 17px);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scoped reset — only inside bc-page */
+.bc-page *,
+.bc-page *::before,
+.bc-page *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Re-apply spacing after reset */
+.bc-page p,
+.bc-page h1, .bc-page h2, .bc-page h3,
+.bc-page .bc-pull, .bc-page .bc-divider,
+.bc-page .bc-grid, .bc-page .bc-tier,
+.bc-page .bc-level, .bc-page .bc-shift,
+.bc-page .bc-code, .bc-page .bc-qblock,
+.bc-page .bc-protection, .bc-page .bc-principle,
+.bc-page .bc-closing, .bc-page .bc-table,
+.bc-page .bc-flow, .bc-page .bc-byline,
+.bc-page .bc-footer {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+
+/* =============================================
+   TYPOGRAPHY
+   ============================================= */
+
+.bc-page .bc-label {
+  font-family: 'IBM Plex Sans', sans-serif !important;
+  font-size: clamp(10px, 1.3vw, 12px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  color: var(--bc-warm);
+  margin-bottom: 1.2rem;
+  line-height: 1.4;
+}
+
+.bc-page h1 {
+  font-family: 'Source Serif 4', serif !important;
+  font-size: clamp(28px, 6vw, 46px) !important;
+  line-height: 1.12 !important;
+  font-weight: 600 !important;
+  color: var(--bc-ink) !important;
+  margin-bottom: 1.2rem !important;
+  letter-spacing: -0.01em;
+}
+
+.bc-page h2 {
+  font-family: 'Source Serif 4', serif !important;
+  font-size: clamp(22px, 4.5vw, 28px) !important;
+  font-weight: 600 !important;
+  color: var(--bc-ink) !important;
+  margin-top: clamp(32px, 6vw, 52px) !important;
+  margin-bottom: 1rem !important;
+  line-height: 1.2 !important;
+}
+
+.bc-page h3 {
+  font-family: 'IBM Plex Sans', sans-serif !important;
+  font-size: clamp(12px, 1.5vw, 14px) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--bc-warm) !important;
+  margin-top: 2rem !important;
+  margin-bottom: 0.75rem !important;
+  line-height: 1.4 !important;
+}
+
+.bc-page p {
+  font-family: 'IBM Plex Sans', sans-serif !important;
+  margin-bottom: 1.25rem !important;
+  font-size: inherit !important;
+  line-height: 1.75 !important;
+  color: var(--bc-ink) !important;
+}
+
+.bc-page .bc-lead {
+  font-size: clamp(17px, 2vw, 19px) !important;
+  line-height: 1.65 !important;
+  margin-bottom: 1.6rem !important;
+}
+
+.bc-page strong {
+  font-weight: 600;
+}
+
+.bc-page em {
+  font-style: italic;
+}
+
+.bc-page code {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.88em;
+  background: #f5f5f4;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+
+/* =============================================
+   DIVIDER
+   ============================================= */
+
+.bc-page .bc-divider {
+  width: 10%;
+  min-width: 32px;
+  height: 2px;
+  background: var(--bc-warm);
+  margin: clamp(24px, 5vw, 48px) 0;
+  border: none;
+}
+
+
+/* =============================================
+   PULL QUOTE
+   ============================================= */
+
+.bc-page .bc-pull {
+  font-family: 'Source Serif 4', serif !important;
+  font-size: clamp(18px, 3.5vw, 22px) !important;
+  font-style: italic;
+  line-height: 1.45 !important;
+  color: var(--bc-warm) !important;
+  border-left: 3px solid var(--bc-warm);
+  padding: 0.3rem 0 0.3rem 1.2rem;
+  margin: 2rem 0 !important;
+}
+
+
+/* =============================================
+   BYLINE
+   ============================================= */
+
+.bc-page .bc-byline {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 1rem 0;
+  border-top: 1px solid var(--bc-border);
+  border-bottom: 1px solid var(--bc-border);
+  margin-bottom: 2.5rem !important;
+}
+
+.bc-page .bc-byline-avatar {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  background: var(--bc-warm);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.bc-page .bc-byline-name {
+  font-weight: 600;
+  color: var(--bc-ink);
+  font-size: 15px;
+  line-height: 1.3;
+}
+
+.bc-page .bc-byline-text {
+  font-size: 14px;
+  color: var(--bc-muted);
+  line-height: 1.3;
+}
+
+
+/* =============================================
+   CARD GRIDS
+   ============================================= */
+
+.bc-page .bc-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(10px, 2vw, 14px);
+  margin: 1.5rem 0 !important;
+}
+
+@media (max-width: 600px) {
+  .bc-page .bc-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.bc-page .bc-card {
+  background: white;
+  border: 1px solid var(--bc-border);
+  border-radius: 8px;
+  padding: clamp(16px, 3vw, 20px);
+}
+
+.bc-page .bc-card-name {
+  font-family: 'Source Serif 4', serif !important;
+  font-size: clamp(16px, 2.5vw, 18px);
+  font-weight: 600;
+  margin-bottom: 6px !important;
+  color: var(--bc-ink);
+}
+
+.bc-page .bc-card-desc {
+  font-size: clamp(13px, 1.5vw, 14px) !important;
+  color: var(--bc-muted);
+  line-height: 1.6 !important;
+  margin-bottom: 0 !important;
+}
+
+
+/* =============================================
+   TIER / IMPLEMENTATION BLOCKS
+   ============================================= */
+
+.bc-page .bc-tier {
+  background: white;
+  border: 1px solid var(--bc-border);
+  border-radius: 8px;
+  padding: clamp(18px, 3vw, 26px);
+  margin: 1rem 0 !important;
+  position: relative;
+  overflow: hidden;
+}
+
+.bc-page .bc-tier::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--bc-warm);
+}
+
+.bc-page .bc-tier-label {
+  font-size: clamp(10px, 1.3vw, 11px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--bc-warm);
+  margin-bottom: 4px !important;
+}
+
+.bc-page .bc-tier-title {
+  font-family: 'Source Serif 4', serif !important;
+  font-size: clamp(17px, 3vw, 20px);
+  font-weight: 600;
+  margin-bottom: 10px !important;
+  color: var(--bc-ink);
+}
+
+.bc-page .bc-tier p {
+  font-size: clamp(14px, 1.5vw, 15px) !important;
+  color: var(--bc-muted) !important;
+  line-height: 1.65 !important;
+  margin-bottom: 0 !important;
+}
+
+
+/* =============================================
+   LEVEL BLOCKS (team / department / org)
+   ============================================= */
+
+.bc-page .bc-level {
+  background: white;
+  border: 1px solid var(--bc-border);
+  border-radius: 10px;
+  margin: 1.5rem 0 !important;
+  overflow: hidden;
+}
+
+.bc-page .bc-level-header {
+  padding: clamp(14px, 3vw, 20px) clamp(16px, 3vw, 24px);
+  border-bottom: 1px solid var(--bc-border);
+}
+
+.bc-page .bc-level-tag {
+  font-size: clamp(10px, 1.3vw, 11px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 4px !important;
+}
+
+.bc-page .bc-level-tag.team { color: var(--bc-green); }
+.bc-page .bc-level-tag.dept { color: var(--bc-blue); }
+.bc-page .bc-level-tag.org  { color: var(--bc-purple); }
+
+.bc-page .bc-level-title {
+  font-family: 'Source Serif 4', serif !important;
+  font-size: clamp(17px, 3vw, 20px);
+  font-weight: 600;
+  color: var(--bc-ink);
+}
+
+.bc-page .bc-level-subtitle {
+  font-size: clamp(13px, 1.5vw, 14px);
+  color: var(--bc-muted);
+  margin-top: 4px;
+}
+
+.bc-page .bc-level-body {
+  padding: clamp(14px, 3vw, 20px) clamp(16px, 3vw, 24px);
+}
+
+.bc-page .bc-level-body p {
+  font-size: clamp(14px, 1.5vw, 15px) !important;
+  line-height: 1.65 !important;
+}
+
+
+/* =============================================
+   ROLE MAP (inside level blocks)
+   ============================================= */
+
+.bc-page .bc-role-map {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 1rem 0 !important;
+}
+
+@media (max-width: 520px) {
+  .bc-page .bc-role-map {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.bc-page .bc-role-item {
+  background: var(--bc-paper);
+  border: 1px solid var(--bc-border);
+  border-radius: 6px;
+  padding: 14px 16px;
+}
+
+.bc-page .bc-role-item-name {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 4px !important;
+  color: var(--bc-ink);
+}
+
+.bc-page .bc-role-item-desc {
+  font-size: 13px !important;
+  color: var(--bc-muted);
+  line-height: 1.5 !important;
+  margin-bottom: 0 !important;
+}
+
+
+/* =============================================
+   SHIFT BLOCKS (from → to)
+   ============================================= */
+
+.bc-page .bc-shift {
+  background: white;
+  border: 1px solid var(--bc-border);
+  border-radius: 8px;
+  padding: clamp(14px, 3vw, 20px) clamp(16px, 3vw, 24px);
+  margin: 0.8rem 0 !important;
+}
+
+.bc-page .bc-shift-label {
+  font-size: clamp(10px, 1.3vw, 11px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--bc-warm);
+  margin-bottom: 8px !important;
+}
+
+.bc-page .bc-shift-from {
+  font-size: clamp(13px, 1.5vw, 14px);
+  color: var(--bc-muted);
+  margin-bottom: 6px !important;
+}
+
+.bc-page .bc-shift-to {
+  font-size: clamp(14px, 1.5vw, 15px);
+  color: var(--bc-ink);
+  font-weight: 500;
+  margin-bottom: 0 !important;
+}
+
+.bc-page .bc-shift-arrow {
+  color: var(--bc-warm);
+  font-weight: 600;
+  margin-right: 4px;
+}
+
+
+/* =============================================
+   PROTECTION BLOCK
+   ============================================= */
+
+.bc-page .bc-protection {
+  background: #fdf8f6;
+  border: 2px solid var(--bc-warm);
+  border-radius: 10px;
+  padding: clamp(18px, 4vw, 28px);
+  margin: 2rem 0 !important;
+}
+
+.bc-page .bc-protection-title {
+  font-family: 'Source Serif 4', serif !important;
+  font-size: clamp(17px, 3vw, 20px);
+  font-weight: 600;
+  margin-bottom: 12px !important;
+  color: var(--bc-warm);
+}
+
+.bc-page .bc-protection p {
+  font-size: clamp(14px, 1.5vw, 15px) !important;
+  line-height: 1.65 !important;
+}
+
+
+/* =============================================
+   CODE BLOCKS (schema JSON displays)
+   ============================================= */
+
+.bc-page .bc-code {
+  background: var(--bc-code-bg);
+  border-radius: 8px;
+  padding: clamp(16px, 3vw, 24px);
+  margin: 1.4rem 0 !important;
+  overflow-x: auto;
+}
+
+.bc-page .bc-code-label {
+  font-size: clamp(10px, 1.3vw, 11px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #a8a29e;
+  margin-bottom: 0.75rem !important;
+}
+
+.bc-page .bc-code pre {
+  font-family: 'IBM Plex Mono', monospace !important;
+  font-size: clamp(12px, 1.4vw, 13.5px) !important;
+  line-height: 1.6 !important;
+  color: var(--bc-code-text) !important;
+  white-space: pre;
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.bc-page .bc-code .key     { color: #f97316; }
+.bc-page .bc-code .str     { color: #86efac; }
+.bc-page .bc-code .comment { color: #78716c; font-style: italic; }
+.bc-page .bc-code .bracket { color: #a8a29e; }
+
+
+/* =============================================
+   QUESTION TEMPLATE BLOCKS
+   ============================================= */
+
+.bc-page .bc-qblock {
+  background: var(--bc-code-bg);
+  border-radius: 8px;
+  padding: clamp(16px, 3vw, 24px);
+  margin: 1.2rem 0 !important;
+}
+
+.bc-page .bc-qblock-title {
+  font-size: clamp(10px, 1.3vw, 12px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: #a8a29e;
+  margin-bottom: 0.8rem !important;
+}
+
+.bc-page .bc-qitem {
+  font-family: 'IBM Plex Mono', monospace !important;
+  font-size: clamp(12px, 1.4vw, 13.5px) !important;
+  line-height: 1.6 !important;
+  color: var(--bc-code-text);
+  padding: 6px 0;
+  border-bottom: 1px solid #3a3632;
+}
+
+.bc-page .bc-qitem:last-child {
+  border-bottom: none;
+}
+
+.bc-page .bc-qrole {
+  color: var(--bc-warm);
+  font-weight: 500;
+}
+
+
+/* =============================================
+   TABLE (access model)
+   ============================================= */
+
+.bc-page .bc-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0 !important;
+  font-size: clamp(13px, 1.4vw, 14px);
+}
+
+.bc-page .bc-table th {
+  text-align: left;
+  font-size: clamp(10px, 1.2vw, 11px);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px clamp(8px, 2vw, 14px);
+  border-bottom: 2px solid var(--bc-ink);
+  color: var(--bc-muted);
+  font-weight: 600;
+  font-family: 'IBM Plex Sans', sans-serif !important;
+}
+
+.bc-page .bc-table td {
+  padding: 12px clamp(8px, 2vw, 14px);
+  border-bottom: 1px solid var(--bc-border);
+  vertical-align: top;
+  line-height: 1.5;
+  font-family: 'IBM Plex Sans', sans-serif !important;
+}
+
+.bc-page .bc-table td:first-child {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+@media (max-width: 500px) {
+  .bc-page .bc-table td:first-child {
+    white-space: normal;
+  }
+}
+
+.bc-page .bc-table .yes     { color: var(--bc-green); font-weight: 500; }
+.bc-page .bc-table .partial { color: var(--bc-blue); font-weight: 500; }
+
+
+/* =============================================
+   FLOW DIAGRAM
+   ============================================= */
+
+.bc-page .bc-flow {
+  background: white;
+  border: 1px solid var(--bc-border);
+  border-radius: 10px;
+  padding: clamp(18px, 4vw, 28px);
+  margin: 1.5rem 0 !important;
+  text-align: center;
+}
+
+.bc-page .bc-flow-step {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: clamp(12px, 1.5vw, 14px);
+  font-weight: 500;
+  margin: 4px;
+}
+
+.bc-page .bc-flow-step.team { background: #ecfdf5; color: var(--bc-green); }
+.bc-page .bc-flow-step.dept { background: #eff6ff; color: var(--bc-blue); }
+.bc-page .bc-flow-step.org  { background: #f3f0ff; color: var(--bc-purple); }
+
+.bc-page .bc-flow-arrow {
+  color: var(--bc-muted);
+  font-size: 18px;
+  margin: 0 4px;
+  vertical-align: middle;
+}
+
+.bc-page .bc-flow-label {
+  font-size: clamp(11px, 1.3vw, 12px);
+  color: var(--bc-muted);
+  margin-top: 10px;
+  font-style: italic;
+}
+
+
+/* =============================================
+   PRINCIPLE BLOCKS
+   ============================================= */
+
+.bc-page .bc-principle {
+  background: white;
+  border: 1px solid var(--bc-border);
+  border-radius: 8px;
+  padding: clamp(16px, 3vw, 22px) clamp(16px, 3vw, 24px);
+  margin: 0.8rem 0 !important;
+}
+
+.bc-page .bc-principle-name {
+  font-weight: 600;
+  font-size: clamp(14px, 1.6vw, 15px);
+  margin-bottom: 4px !important;
+  color: var(--bc-ink);
+}
+
+.bc-page .bc-principle-desc {
+  font-size: clamp(13px, 1.5vw, 14px) !important;
+  color: var(--bc-muted);
+  line-height: 1.6 !important;
+  margin-bottom: 0 !important;
+}
+
+
+/* =============================================
+   CLOSING BLOCK
+   ============================================= */
+
+.bc-page .bc-closing {
+  background: var(--bc-ink);
+  color: var(--bc-paper);
+  border-radius: 10px;
+  padding: clamp(24px, 5vw, 40px) clamp(20px, 4vw, 32px);
+  margin-top: clamp(24px, 5vw, 52px) !important;
+}
+
+.bc-page .bc-closing p {
+  color: #a8a29e !important;
+  font-size: clamp(14px, 1.5vw, 15.5px) !important;
+}
+
+.bc-page .bc-closing strong {
+  color: var(--bc-paper) !important;
+}
+
+.bc-page .bc-closing .bc-question {
+  font-family: 'Source Serif 4', serif !important;
+  font-size: clamp(18px, 3.5vw, 22px) !important;
+  color: var(--bc-paper) !important;
+  font-style: italic;
+  margin-bottom: 16px !important;
+  line-height: 1.4 !important;
+}
+
+
+/* =============================================
+   FOOTER
+   ============================================= */
+
+.bc-page .bc-footer {
+  margin-top: clamp(24px, 5vw, 44px) !important;
+  padding-top: 1rem;
+  border-top: 1px solid var(--bc-border);
+  font-size: clamp(13px, 1.4vw, 14px);
+  color: var(--bc-muted);
+}
+
+.bc-page .bc-footer strong {
+  color: var(--bc-ink);
+}
+
+.bc-page .bc-footer p {
+  color: var(--bc-muted) !important;
+  font-size: clamp(13px, 1.4vw, 14px) !important;
+  margin-bottom: 0.4rem !important;
+}
+
+
+/* =============================================
+   LANDING PAGE (add bc-landing to bc-page)
+   ============================================= */
+
+.bc-page.bc-landing {
+  text-align: center;
+  max-width: 680px;
+}
+
+.bc-page.bc-landing .bc-subtitle {
+  font-size: clamp(16px, 2vw, 19px) !important;
+  color: var(--bc-muted) !important;
+  line-height: 1.6 !important;
+  margin-bottom: 2.5rem !important;
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bc-page.bc-landing .bc-doc-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(12px, 2vw, 20px);
+  margin: 2rem 0 !important;
+  text-align: left;
+}
+
+@media (max-width: 700px) {
+  .bc-page.bc-landing .bc-doc-cards {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.bc-page.bc-landing .bc-doc-card {
+  background: white;
+  border: 1px solid var(--bc-border);
+  border-radius: 12px;
+  padding: clamp(20px, 4vw, 32px) clamp(18px, 3vw, 28px);
+  text-decoration: none !important;
+  color: var(--bc-ink) !important;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  display: block;
+}
+
+.bc-page.bc-landing .bc-doc-card:hover {
+  border-color: var(--bc-warm);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  text-decoration: none !important;
+}
+
+.bc-page.bc-landing .bc-doc-number {
+  font-size: clamp(10px, 1.3vw, 12px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--bc-warm);
+  margin-bottom: 8px !important;
+}
+
+.bc-page.bc-landing .bc-doc-title {
+  font-family: 'Source Serif 4', serif !important;
+  font-size: clamp(18px, 3vw, 22px);
+  font-weight: 600;
+  margin-bottom: 8px !important;
+  line-height: 1.25;
+  color: var(--bc-ink);
+}
+
+.bc-page.bc-landing .bc-doc-desc {
+  font-size: clamp(12px, 1.4vw, 14px) !important;
+  color: var(--bc-muted) !important;
+  line-height: 1.6 !important;
+  margin-bottom: 0 !important;
+}
+
+.bc-page.bc-landing .bc-doc-arrow {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--bc-warm);
+  font-weight: 600;
+  font-size: clamp(12px, 1.4vw, 14px);
+}
+
+.bc-page.bc-landing .bc-summary {
+  text-align: left;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.bc-page.bc-landing .bc-summary p {
+  font-size: clamp(14px, 1.5vw, 15.5px) !important;
+  color: var(--bc-muted) !important;
+  line-height: 1.7 !important;
+}
+
+
+/* =============================================
+   PAGE HEADER (alternative to inline h1)
+   Use when page needs label + title + lead
+   as a standalone header section
+   ============================================= */
+
+.bc-page .bc-page-header {
+  margin-bottom: clamp(24px, 5vw, 48px);
+}
+
+.bc-page .bc-page-header .bc-header-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--bc-warm);
+  margin-top: clamp(12px, 2vw, 20px);
+}

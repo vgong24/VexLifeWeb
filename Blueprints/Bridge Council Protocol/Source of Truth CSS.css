@@ -1,0 +1,282 @@
+/* ==========================================================
+   VEXTREME BLUEPRINT DESIGN SYSTEM
+   Unified Claude + Vex Source of Truth
+   Squarespace-compatible, fully scoped, responsive
+   Prefix: bc-
+========================================================== */
+
+/* ---------------------------
+   Root Variables
+--------------------------- */
+:root {
+  --bc-ink: #1c1917;
+  --bc-paper: #fafaf9;
+  --bc-warm: #b45830;
+  --bc-muted: #78716c;
+  --bc-border: #e7e5e4;
+  --bc-radius: 12px;
+  --bc-max-width: 720px;
+
+  --bc-h1: clamp(28px, 6vw, 42px);
+  --bc-h2: clamp(22px, 5vw, 30px);
+  --bc-h3: clamp(13px, 2.4vw, 15px);
+  --bc-body: clamp(15px, 1.6vw, 17px);
+  --bc-pull: clamp(18px, 4vw, 22px);
+
+  --bc-pad: clamp(16px, 4vw, 32px);
+  --bc-gap: clamp(20px, 5vw, 48px);
+}
+
+/* ---------------------------
+   Page Wrapper
+--------------------------- */
+.bc-page {
+  max-width: var(--bc-max-width);
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: var(--bc-gap) var(--bc-pad);
+  background: var(--bc-paper);
+  color: var(--bc-ink);
+  box-sizing: border-box;
+}
+
+/* ---------------------------
+   Typography
+--------------------------- */
+.bc-label {
+  font-size: clamp(11px, 1.5vw, 13px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.6px;
+  color: var(--bc-warm);
+  margin-bottom: 0.75rem;
+}
+
+.bc-h1 {
+  font-family: "Source Serif 4", serif;
+  font-size: var(--bc-h1);
+  margin: 0 0 1rem;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.bc-h2 {
+  font-family: "Source Serif 4", serif;
+  font-size: var(--bc-h2);
+  font-weight: 600;
+  margin: var(--bc-gap) 0 1rem;
+}
+
+.bc-h3 {
+  font-size: var(--bc-h3);
+  text-transform: uppercase;
+  letter-spacing: 1.4px;
+  color: var(--bc-warm);
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.bc-lead {
+  font-size: clamp(16px, 2vw, 20px);
+  line-height: 1.65;
+  color: var(--bc-muted);
+  margin-bottom: 1.5rem;
+}
+
+.bc-p {
+  font-size: var(--bc-body);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+  color: var(--bc-ink);
+}
+
+/* ---------------------------
+   Divider
+--------------------------- */
+.bc-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--bc-warm);
+  margin: 1.2rem 0 2rem;
+}
+
+/* ---------------------------
+   Cards (bc-card)
+--------------------------- */
+.bc-card {
+  background: white;
+  border: 1px solid var(--bc-border);
+  border-radius: var(--bc-radius);
+  padding: var(--bc-pad);
+  margin: 1rem 0;
+  box-sizing: border-box;
+}
+
+.bc-card-title {
+  font-family: "Source Serif 4", serif;
+  font-size: clamp(18px, 3vw, 20px);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.bc-card-desc {
+  color: var(--bc-muted);
+  font-size: var(--bc-body);
+  line-height: 1.6;
+}
+
+/* ---------------------------
+   Grid Layout
+--------------------------- */
+.bc-grid {
+  display: grid;
+  gap: var(--bc-gap);
+  grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 720px) {
+  .bc-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ---------------------------
+   Pull Quote
+--------------------------- */
+.bc-pull {
+  font-family: "Source Serif 4", serif;
+  font-style: italic;
+  font-size: var(--bc-pull);
+  line-height: 1.45;
+  color: var(--bc-warm);
+  border-left: 3px solid var(--bc-warm);
+  padding-left: 1rem;
+  margin: 2rem 0;
+}
+
+/* ---------------------------
+   Code Block
+--------------------------- */
+.bc-code {
+  background: #292524;
+  color: #e7e5e4;
+  padding: clamp(14px, 3vw, 24px);
+  border-radius: var(--bc-radius);
+  overflow-x: auto;
+  margin: 1.5rem 0;
+}
+
+.bc-code pre {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: clamp(12px, 1.4vw, 14px);
+  white-space: pre-wrap;
+}
+
+.bc-code .bc-key { color: #f97316; }
+.bc-code .bc-str { color: #86efac; }
+.bc-code .bc-comment { color: #78716c; font-style: italic; }
+
+/* ---------------------------
+   Tiers (bc-tier)
+--------------------------- */
+.bc-tier {
+  border: 1px solid var(--bc-border);
+  border-radius: var(--bc-radius);
+  padding: var(--bc-pad);
+  margin: 1rem 0;
+  position: relative;
+}
+
+.bc-tier::before {
+  content: "";
+  height: 4px;
+  background: var(--bc-warm);
+  display: block;
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.bc-tier-title {
+  font-family: "Source Serif 4", serif;
+  font-size: clamp(18px, 3vw, 20px);
+  margin-bottom: 0.5rem;
+}
+
+/* ---------------------------
+   Shift Block
+--------------------------- */
+.bc-shift {
+  background: #fdfbf7;
+  border: 1px solid var(--bc-border);
+  border-radius: var(--bc-radius);
+  padding: var(--bc-pad);
+  margin: 1.5rem 0;
+}
+
+/* ---------------------------
+   Protection Block
+--------------------------- */
+.bc-protection {
+  background: #faf3e3;
+  border-left: 4px solid var(--bc-warm);
+  padding: var(--bc-pad);
+  margin: 2rem 0;
+  border-radius: var(--bc-radius);
+}
+
+.bc-protection-title {
+  font-weight: 600;
+  font-size: clamp(16px, 2vw, 18px);
+  margin-bottom: 0.5rem;
+}
+
+/* ---------------------------
+   Closing Section
+--------------------------- */
+.bc-closing {
+  background: var(--bc-ink);
+  color: var(--bc-paper);
+  padding: var(--bc-pad);
+  border-radius: var(--bc-radius);
+  margin-top: 3rem;
+}
+
+.bc-closing p {
+  margin: 0;
+  color: #ddd;
+}
+
+/* ---------------------------
+   Footer
+--------------------------- */
+.bc-footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--bc-border);
+  color: var(--bc-muted);
+  font-size: clamp(13px, 1.4vw, 15px);
+}
+
+/* ==========================================================
+   SQUARESPACE CONTAINER FIXES
+   Ensures full responsive width inside Code Blocks
+========================================================== */
+
+.sqs-block-html .sqs-block-content > .bc-page,
+.sqs-block-code .sqs-block-content > .bc-page {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+}
+
+.sqs-block-html .sqs-block-content,
+.sqs-block-code .sqs-block-content {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
